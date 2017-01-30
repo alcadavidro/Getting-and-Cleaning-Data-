@@ -39,7 +39,7 @@ Big_Data <- rbind(Complete_Data_train, Complete_Data_test)
 Data_names <- c("subject", "activity", features_labels$Feature)
 colnames(Big_Data) <- Data_names
 
-### Step 5: labaling activities as factors and subject too to get the final Tidy Data called as Big_data
+### Step 5: labeling activities as factors and subject too to get the final Tidy Data called as Big_data
 activity$Activity <- as.character(activity$Activity)
 Big_Data$activity <- factor(Big_Data$activity, levels = activity$id, labels = activity$Activity)
 Big_Data$subject <- as.factor(Big_Data$subject)
@@ -51,7 +51,7 @@ Variables_means <- reshape2::dcast(Variables_means, subject + activity ~ variabl
 ### Step 7: Saving the Tidy datasets
 if(!file.exists('./Tidy_datasets')){
     dir.create('./Tidy_datasets')
-    write.table(Big_Data, file = './Tidy_datasets/Smartphone_dataset.txt')
-    write.table(Variables_means, file = './Tidy_datasets/Smartphone_dataset_means.txt')
+    write.table(Big_Data, file = './Tidy_datasets/Smartphone_dataset.txt', row.names = FALSE)
+    write.table(Variables_means, file = './Tidy_datasets/Smartphone_dataset_means.txt', row.names = FALSE)
 }
 
